@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package svg_proto;
+
+message Point {
+	double x = 1;
+	double y = 2;
+}
+
+message Rgba {
+	bool has_opacity = 1;
+	uint32 red = 2;
+	uint32 green = 3;
+	uint32 blue = 4;
+	double opacity = 5;
+}
+
+message Color {
+	oneof data {
+		bool is_none = 1;
+		bytes str = 2;
+		Rgba rgba = 3;
+	}
+}
+
+message Polyline {
+	uint64 bus_id = 1;
+	repeated Point point = 2;
+}
+
+message Circle {
+	uint64 stop_id = 1;
+	Point pos = 2;
+}
